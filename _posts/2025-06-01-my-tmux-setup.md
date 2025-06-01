@@ -258,6 +258,6 @@ run '~/.tmux/plugins/tpm/tpm'
 
 This `tmux` configuration aims to supercharge your terminal with intuitive keybindings, smart integrations, and an efficient layout. Whether you're juggling code across multiple panes or navigating across sessions, this setup should keep things fast and fluid.
 
-If you have suggestions or enhancements, feel free to [reach out or fork the config](#)!
+If you have suggestions or enhancements, feel free to reach out or [fork the config](https://github.com/shivamashtikar/easy-tmux)!
 
 Happy hacking!

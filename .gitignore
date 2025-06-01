@@ -21,6 +21,7 @@ package-lock.json
 !.vscode/settings.json
 !.vscode/extensions.json
 !.vscode/tasks.json
+Session.vim
 
 # Misc
 _sass/vendors

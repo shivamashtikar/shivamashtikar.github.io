@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "My Tmux Configuration for an Efficient Terminal Workflow"
-date: 2025-05-31
+date: 2025-06-01
 categories: [productivity, terminal, tmux]
 tags: [tmux, terminal, productivity, configuration, linux, dotfiles]
 description: "A detailed walkthrough of my tmux.conf setup with custom keybindings, window management, and plugin integrations for a streamlined terminal workflow."

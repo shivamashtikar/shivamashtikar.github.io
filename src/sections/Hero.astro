@@ -1,0 +1,53 @@
+---
+import Typewriter from '../components/Typewriter.jsx';
+import { personal } from '../data/site.js';
+---
+
+<section
+  id="about"
+  class="relative flex flex-col items-center justify-center text-center min-h-[70vh] px-6 py-16 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800"
+>
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-5xl md:text-6xl font-extrabold text-gray-900 dark:text-gray-100 mb-4">
+      Hi, I'm
+      <span class="block text-6xl md:text-7xl font-bold text-blue-600 dark:text-blue-400 min-h-[3.75rem] md:min-h-[4.5rem]">
+        <Typewriter 
+          client:visible 
+          words={['Shivam Ashtikar', 'Software Engineer', 'AI Enthusiast', 'Problem Solver']}
+        />
+      </span>
+    </h1>
+
+    <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto mb-8 leading-relaxed">
+      {personal.tagline}. Currently working as an SDE II at Juspay, specializing in AI/ML systems, 
+      functional programming, and cloud infrastructure.
+    </p>
+    
+    <div class="flex gap-4 justify-center mb-12">
+      <a 
+        href="#experience" 
+        class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition shadow-lg hover:shadow-xl"
+      >
+        View Experience
+      </a>
+      <a 
+        href="https://github.com/shivamashtikar" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-6 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-lg font-semibold hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition"
+      >
+        GitHub Profile
+      </a>
+    </div>
+  </div>
+
+  <a
+    href="#content"
+    class="absolute bottom-8 animate-bounce inline-flex items-center p-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition"
+    aria-label="Scroll to content"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+    </svg>
+  </a>
+</section>

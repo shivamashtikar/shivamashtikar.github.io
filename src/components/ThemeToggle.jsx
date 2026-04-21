@@ -1,21 +1,43 @@
-import React, { useContext } from 'react';
-import { ThemeContext } from './ThemeProvider';
+import { useState, useEffect } from 'react';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 
-const ThemeToggle = () => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+export default function ThemeToggle() {
+  const [theme, setTheme] = useState('light');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    const root = document.documentElement;
+    const saved = localStorage.getItem('theme');
+    const system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    const currentTheme = saved || system;
+    setTheme(currentTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(newTheme);
+  };
+
+  // Prevent hydration mismatch by rendering placeholder on server
+  if (!mounted) {
+    return <div className="w-10 h-10" aria-hidden="true" />;
+  }
 
   return (
     <button 
-      onClick={toggleTheme} 
-      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-600 transition"
+      onClick={toggleTheme}
+      className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"
+      aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
-      {theme === 'light' ? 
-        <MoonIcon className="h-6 w-6 text-gray-800" /> : 
+      {theme === 'light' ? (
+        <MoonIcon className="h-6 w-6 text-gray-800" />
+      ) : (
         <SunIcon className="h-6 w-6 text-yellow-400" />
-      }
+      )}
     </button>
   );
-};
-
-export default ThemeToggle;
+}

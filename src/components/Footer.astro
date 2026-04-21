@@ -1,0 +1,25 @@
+---
+import { personal } from '../data/site.js';
+
+const currentYear = new Date().getFullYear();
+
+// Decode HTML entities to get the actual email
+const decodedEmail = personal.emailEncoded.replace(/&#(\d+);/g, (_, code) => String.fromCharCode(parseInt(code)));
+---
+
+<footer class="bg-white dark:bg-gray-800 mt-16 py-8 border-t dark:border-gray-700">
+  <div class="container max-w-screen-lg mx-auto px-6 text-center">
+    <p class="text-gray-600 dark:text-gray-300 mb-4">
+      Always curious, always building — let's connect!
+    </p>
+    <a
+      href={`mailto:${decodedEmail}`}
+      class="text-blue-600 dark:text-blue-400 hover:underline font-medium"
+    >
+      {decodedEmail}
+    </a>
+    <p class="mt-6 text-sm text-gray-400 dark:text-gray-500">
+      © {currentYear} Shivam Ashtikar. Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="hover:underline">Astro</a>.
+    </p>
+  </div>
+</footer>

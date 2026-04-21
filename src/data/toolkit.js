@@ -1,7 +1,8 @@
 export const categories = [
   {
     name: "AI & Machine Learning",
-    icon: "A",
+    iconType: "hero",
+    iconName: "CpuChipIcon",
     items: [
       { name: "vLLM", description: "High-throughput LLM serving", icon: "v" },
       { name: "SGLang", description: "Structured Generation Language", icon: "S" },
@@ -10,7 +11,8 @@ export const categories = [
   },
   {
     name: "Languages",
-    icon: "L",
+    iconType: "hero",
+    iconName: "CodeBracketIcon",
     items: [
       { name: "Haskell", description: "Functional programming, type safety", iconType: "si", iconName: "SiHaskell", color: "text-purple-600" },
       { name: "PureScript", description: "Strongly-typed FP for frontend", iconType: "si", iconName: "SiPurescript", color: "text-indigo-600" },
@@ -21,7 +23,8 @@ export const categories = [
   },
   {
     name: "Frameworks & Libraries",
-    icon: "F",
+    iconType: "hero",
+    iconName: "Squares2X2Icon",
     items: [
       { name: "React", description: "Modern web UI development", iconType: "fa", iconName: "FaReact", color: "text-sky-500" },
       { name: "Presto", description: "Cross-platform PureScript framework", iconType: "si", iconName: "SiHaskell", color: "text-pink-600" },
@@ -30,7 +33,8 @@ export const categories = [
   },
   {
     name: "Databases",
-    icon: "D",
+    iconType: "hero",
+    iconName: "CircleStackIcon",
     items: [
       { name: "PostgreSQL", description: "Relational database management system", iconType: "si", iconName: "SiPostgresql", color: "text-blue-600" },
       { name: "Vespa", description: "Vector database for AI applications", icon: "V" }
@@ -38,7 +42,8 @@ export const categories = [
   },
   {
     name: "Cloud & DevOps",
-    icon: "C",
+    iconType: "hero",
+    iconName: "CloudIcon",
     items: [
       { name: "AWS", description: "Cloud infrastructure and services", iconType: "fa", iconName: "FaAws", color: "text-orange-500" },
       { name: "Google Cloud", description: "Cloud infrastructure and services", iconType: "si", iconName: "SiGooglecloud", color: "text-blue-500" },
@@ -50,7 +55,8 @@ export const categories = [
   },
   {
     name: "Monitoring",
-    icon: "M",
+    iconType: "hero",
+    iconName: "ChartBarIcon",
     items: [
       { name: "Grafana", description: "Visualization and analytics", iconType: "si", iconName: "SiGrafana", color: "text-orange-500" },
       { name: "Prometheus", description: "Metrics and alerting", iconType: "si", iconName: "SiPrometheus", color: "text-orange-600" },
@@ -60,7 +66,8 @@ export const categories = [
   },
   {
     name: "Testing",
-    icon: "T",
+    iconType: "hero",
+    iconName: "BeakerIcon",
     items: [
       { name: "Pytest", description: "Unit and integration testing", iconType: "si", iconName: "SiPython", color: "text-green-500" },
       { name: "Katalon", description: "End-to-end automation", icon: "K" }

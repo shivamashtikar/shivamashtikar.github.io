@@ -4,31 +4,31 @@ const { experiences } = experiencesData;
 ---
 
 <section id="experience" class="mb-24">
-  <h2 class="text-4xl font-bold text-center mb-12 dark:text-gray-100">Experience</h2>
-  
+  <h2 class="text-4xl font-bold text-center mb-12 text-base-content">Experience</h2>
+
   <div class="max-w-3xl mx-auto">
-    <div class="border-l-4 border-blue-500 pl-8 space-y-12">
+    <div class="border-l-4 border-primary pl-8 space-y-12">
       {experiences.map((exp) => (
         <article class="relative">
-          <div class="absolute -left-[41px] bg-blue-500 h-4 w-4 rounded-full ring-4 ring-white dark:ring-gray-900"></div>
-          
-          <h3 class="text-2xl font-semibold dark:text-gray-100">
+          <div class="absolute -left-[41px] bg-primary h-4 w-4 rounded-full ring-4 ring-base-100"></div>
+
+          <h3 class="text-2xl font-semibold text-base-content">
             {exp.role} @{' '}
-            <a 
-              href={exp.companyUrl} 
-              target="_blank" 
+            <a
+              href={exp.companyUrl}
+              target="_blank"
               rel="noopener noreferrer"
-              class="text-blue-600 dark:text-blue-400 hover:underline"
+              class="text-primary hover:underline"
             >
               {exp.company}
             </a>
           </h3>
-          
-          <time class="text-md text-gray-500 dark:text-gray-400 mb-4 block">
+
+          <time class="text-md text-base-content/60 mb-4 block">
             {exp.period}
           </time>
-          
-          <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
+
+          <ul class="list-disc list-inside text-base-content/80 space-y-2">
             {exp.highlights.map((highlight) => (
               <li class="leading-relaxed">{highlight}</li>
             ))}

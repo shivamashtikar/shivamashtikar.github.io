@@ -1,5 +1,4 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import sitemap from '@astrojs/sitemap';
 
@@ -7,7 +6,6 @@ export default defineConfig({
   site: 'https://shivamashtikar.com',
   base: '/',
   integrations: [
-    tailwind(),
     react(),
     sitemap(),
   ],
@@ -19,10 +17,5 @@ export default defineConfig({
   compressHTML: true,
   build: {
     format: 'directory',
-  },
-  vite: {
-    css: {
-      postcss: './postcss.config.js',
-    },
   },
 });

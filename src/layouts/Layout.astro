@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 export interface Props {
   title: string;
   description: string;
@@ -10,7 +12,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -51,10 +53,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Theme Script (Prevent FOUC) -->
     <script is:inline>
       (function() {
-        const theme = localStorage.getItem('theme') || 
-          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        document.documentElement.classList.remove('light', 'dark');
-        document.documentElement.classList.add(theme);
+        const savedTheme = localStorage.getItem('theme');
+        // If user hasn't set a preference, default to dark
+        const theme = savedTheme || 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>
     
@@ -72,8 +74,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "url": "https://juspay.io",
         "sameAs": "https://www.linkedin.com/company/juspay-technologies-pvt-ltd/"
       },
-      "url": "https://shivamashtikar.github.io",
-      "image": "https://shivamashtikar.github.io/og-image.jpg",
+      "url": "https://shivamashtikar.com",
+      "image": "https://shivamashtikar.com/og-image.jpg",
       "sameAs": [
         "https://github.com/shivamashtikar",
         "https://linkedin.com/in/shivamashtikar"
@@ -108,7 +110,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Shivam Ashtikar - Portfolio",
-      "url": "https://shivamashtikar.github.io",
+      "url": "https://shivamashtikar.com",
       "author": {
         "@type": "Person",
         "name": "Shivam Ashtikar"
@@ -121,7 +123,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="dns-prefetch" href="https://linkedin.com" />
     <link rel="dns-prefetch" href="https://juspay.io" />
   </head>
-  <body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 antialiased">
+  <body class="bg-base-100 text-base-content antialiased min-h-screen">
     <slot />
   </body>
 </html>

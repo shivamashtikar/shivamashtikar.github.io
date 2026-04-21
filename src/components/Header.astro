@@ -4,51 +4,51 @@ import linkedinLogo from '../assets/LI-In-Bug.png';
 import ThemeToggle from './ThemeToggle.jsx';
 ---
 
-<header class="bg-white dark:bg-gray-900 shadow-md sticky top-0 z-50">
+<header class="bg-base-100 shadow-md sticky top-0 z-50">
   <div class="container max-w-screen-lg mx-auto px-6 py-4 flex justify-between items-center">
-    <a href="#about" class="text-2xl font-bold text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 transition">
+    <a href="#about" class="text-2xl font-bold text-base-content hover:text-primary transition">
       Shivam Ashtikar
     </a>
-    
+
     <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center space-x-6 text-lg">
-      <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">
+      <a href="#about" class="hover:text-primary transition">
         About
       </a>
-      <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">
+      <a href="#experience" class="hover:text-primary transition">
         Experience
       </a>
-      <a href="#toolkit" class="hover:text-blue-600 dark:hover:text-blue-400 transition">
+      <a href="#toolkit" class="hover:text-primary transition">
         Toolkit
       </a>
-      
-      <div class="flex items-center space-x-4 pl-4 border-l border-gray-300 dark:border-gray-700">
-        <a 
-          href="https://github.com/shivamashtikar" 
-          target="_blank" 
+
+      <div class="flex items-center space-x-4 pl-4 border-l border-base-300">
+        <a
+          href="https://github.com/shivamashtikar"
+          target="_blank"
           rel="noopener noreferrer"
           class="hover:opacity-75 transition"
           aria-label="GitHub Profile"
         >
-          <img 
-            src={githubLogo.src} 
-            alt="GitHub" 
-            class="h-8 w-8 dark:invert" 
+          <img
+            src={githubLogo.src}
+            alt="GitHub"
+            class="h-8 w-8"
             width="32"
             height="32"
           />
         </a>
-        <a 
-          href="https://linkedin.com/in/shivamashtikar" 
-          target="_blank" 
+        <a
+          href="https://linkedin.com/in/shivamashtikar"
+          target="_blank"
           rel="noopener noreferrer"
           class="hover:opacity-75 transition"
           aria-label="LinkedIn Profile"
         >
-          <img 
-            src={linkedinLogo.src} 
-            alt="LinkedIn" 
-            class="h-8 w-8" 
+          <img
+            src={linkedinLogo.src}
+            alt="LinkedIn"
+            class="h-8 w-8"
             width="32"
             height="32"
           />
@@ -60,16 +60,16 @@ import ThemeToggle from './ThemeToggle.jsx';
     <!-- Mobile Menu Button -->
     <div class="md:hidden flex items-center gap-4">
       <ThemeToggle client:load />
-      <button 
+      <button
         id="mobile-menu-btn"
         class="p-2"
         aria-label="Toggle menu"
         aria-expanded="false"
       >
-        <svg id="menu-icon" class="h-8 w-8 text-gray-800 dark:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg id="menu-icon" class="h-8 w-8 text-base-content" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg id="close-icon" class="h-8 w-8 text-gray-800 dark:text-gray-200 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg id="close-icon" class="h-8 w-8 text-base-content hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
@@ -77,11 +77,11 @@ import ThemeToggle from './ThemeToggle.jsx';
   </div>
 
   <!-- Mobile Menu -->
-  <nav id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t dark:border-gray-800">
+  <nav id="mobile-menu" class="hidden md:hidden bg-base-100 border-t border-base-300">
     <div class="flex flex-col items-center space-y-4 py-4 text-lg">
-      <a href="#about" class="hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
-      <a href="#experience" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Experience</a>
-      <a href="#toolkit" class="hover:text-blue-600 dark:hover:text-blue-400 transition">Toolkit</a>
+      <a href="#about" class="hover:text-primary transition">About</a>
+      <a href="#experience" class="hover:text-primary transition">Experience</a>
+      <a href="#toolkit" class="hover:text-primary transition">Toolkit</a>
     </div>
   </nav>
 </header>

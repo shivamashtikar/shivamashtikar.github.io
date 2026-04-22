@@ -16,7 +16,7 @@ export const experiences = [
             focus: 'LLM Inference & MLOps',
             achievements: [
               {
-                text: 'Spearheaded AI Infrastructure team deploying open-weight LLMs on dual 8x H200 GPU nodes with vLLM and SGLang',
+                text: 'Spearheaded AI Infrastructure team deploying open-weight LLMs on 8x H200 GPU nodes with vLLM and SGLang',
                 highlight: '8x H200 GPU nodes',
               },
               {

@@ -1,0 +1,78 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  
+  return posts.map(post => {
+    const date = post.data.date;
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    
+    return {
+      params: { 
+        slug: `${year}/${month}/${post.id}` 
+      },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+// Format date for display
+function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+}
+---
+
+<Layout 
+  title={`${post.data.title} | Shivam Ashtikar`}
+  description={post.data.description}
+>
+  <Header />
+  
+  <main class="min-h-screen bg-base-100">
+    <article class="container max-w-screen-lg mx-auto px-6 py-12">
+      <!-- Back Link -->
+      <a href="/blog" class="inline-flex items-center text-primary hover:underline mb-8">
+        ← Back to Blog
+      </a>
+      
+      <!-- Article Header -->
+      <header class="mb-12">
+        <time class="text-base-content/60 text-lg">
+          {formatDate(post.data.date)}
+        </time>
+        <h1 class="text-4xl md:text-5xl font-bold text-base-content mt-2 mb-4">
+          {post.data.title}
+        </h1>
+        <p class="text-xl text-base-content/80">
+          {post.data.description}
+        </p>
+      </header>
+      
+      <!-- Article Content -->
+      <div class="prose prose-lg max-w-none">
+        <Content />
+      </div>
+      
+      <!-- Article Footer -->
+      <footer class="mt-16 pt-8 border-t border-base-300">
+        <a href="/blog" class="inline-flex items-center text-primary hover:underline">
+          ← Back to all posts
+        </a>
+      </footer>
+    </article>
+  </main>
+  
+  <Footer />
+</Layout>

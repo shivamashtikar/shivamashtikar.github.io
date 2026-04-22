@@ -171,7 +171,7 @@
   pre code {
     background-color: transparent;
     padding: 0;
-    color: var(--color-base-content);
+    color: inherit;
   }
   
   ::selection {

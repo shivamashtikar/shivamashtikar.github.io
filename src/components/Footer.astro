@@ -8,7 +8,8 @@ const decodedEmail = personal.emailEncoded.replace(/&#(\d+);/g, (_, code) => Str
 ---
 
 <footer class="bg-base-200 mt-12 py-4 pb-6 border-t border-base-300">
-  <div class="container max-w-screen-lg mx-auto px-6 text-center">
+  <!-- Desktop Footer Content -->
+  <div class="hidden md:block container max-w-screen-lg mx-auto px-6 text-center">
     <p class="text-base-content/70 mb-4">
       Always curious, always building — let's connect!
     </p>
@@ -27,6 +28,13 @@ const decodedEmail = personal.emailEncoded.replace(/&#(\d+);/g, (_, code) => Str
     
     <p class="mt-4 text-sm text-base-content/50">
       © {currentYear} Shivam Ashtikar. Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="hover:underline">Astro</a>.
+    </p>
+  </div>
+  
+  <!-- Mobile Footer Content - Minimal -->
+  <div class="md:hidden container max-w-screen-lg mx-auto px-6 text-center pt-2 pb-4">
+    <p class="text-xs text-base-content/50">
+      © {currentYear} Shivam Ashtikar · Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="hover:underline">Astro</a>
     </p>
   </div>
 </footer>

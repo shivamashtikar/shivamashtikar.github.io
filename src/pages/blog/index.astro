@@ -62,7 +62,7 @@ if (combinedPosts.length === 0) {
 >
   <Header />
   
-  <main class="min-h-screen bg-base-100">
+  <main class="min-h-screen bg-base-100 pb-20 md:pb-0">
     <div class="container max-w-screen-lg mx-auto px-6 py-16">
       <!-- Header Section -->
       <div class="text-center mb-16">
@@ -125,5 +125,7 @@ if (combinedPosts.length === 0) {
     </div>
   </main>
   
-  <Footer />
+  <div class="hidden md:block">
+    <Footer />
+  </div>
 </Layout>

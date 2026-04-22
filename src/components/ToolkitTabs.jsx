@@ -60,10 +60,11 @@ export default function ToolkitTabs() {
   const selectedCategory = categories.find(c => c.name === selected);
 
   return (
-    <section id="toolkit" className="mb-16 scroll-mt-20">
-      <h2 className="text-4xl font-bold text-center mb-12 text-base-content">
-        Technical Toolkit
-      </h2>
+    <section id="toolkit" className="py-16 scroll-mt-20">
+      <div className="max-w-4xl mx-auto px-4 md:px-6">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-base-content">
+          Technical Toolkit
+        </h2>
 
       {/* Category Tabs */}
       <div className="flex flex-wrap justify-center gap-3 mb-8 pb-4 pt-2">
@@ -84,8 +85,8 @@ export default function ToolkitTabs() {
       </div>
 
       {/* Tech Items Grid */}
-      <div className="max-w-5xl mx-auto">
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8 bg-base-200 rounded-2xl shadow-inner border border-base-300">
+      <div className="max-w-4xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 p-4 md:p-6 bg-base-200 rounded-2xl shadow-inner border border-base-300">
           {selectedCategory.items.map((item) => (
             <div
               key={item.name}
@@ -105,6 +106,7 @@ export default function ToolkitTabs() {
             </div>
           ))}
         </div>
+      </div>
       </div>
     </section>
   );

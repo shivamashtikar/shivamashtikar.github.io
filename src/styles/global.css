@@ -1,58 +1,192 @@
 @import "tailwindcss";
+
+/* =============================================
+   DAISYUI THEME CONFIGURATION
+   Custom Atom One Dark/Light themes
+   ============================================= */
 @plugin "daisyui" {
-  themes: light, dark;
+  /* Disable built-in themes, use custom only */
+  themes: false;
 }
 
+/* Register custom themes with DaisyUI v5 */
+:root {
+  /* =============================================
+     ATOM ONE DARK THEME (Default)
+     ============================================= */
+  
+  /* DaisyUI Core Semantic Colors - Enhanced Contrast */
+  --color-base-100: #1e2227;
+  --color-base-200: #282c34;
+  --color-base-300: #3e4451;
+  --color-base-content: #c8cdd4;
+  
+  --color-primary: #61afef;
+  --color-primary-content: #282c34;
+  
+  --color-secondary: #c678dd;
+  --color-secondary-content: #282c34;
+  
+  --color-accent: #98c379;
+  --color-accent-content: #282c34;
+  
+  --color-neutral: #4b5263;
+  --color-neutral-content: #abb2bf;
+  
+  --color-info: #56b6c2;
+  --color-info-content: #282c34;
+  
+  --color-success: #98c379;
+  --color-success-content: #282c34;
+  
+  --color-warning: #e5c07b;
+  --color-warning-content: #282c34;
+  
+  --color-error: #e06c75;
+  --color-error-content: #282c34;
+  
+  /* Additional Atom One Dark Colors */
+  --color-bg: #282c34;
+  --color-fg: #abb2bf;
+  --color-comment: #5c6370;
+  --color-gutter: #4b5263;
+  --color-red: #e06c75;
+  --color-dark-red: #be5046;
+  --color-green: #98c379;
+  --color-yellow: #e5c07b;
+  --color-dark-yellow: #d19a66;
+  --color-blue: #61afef;
+  --color-magenta: #c678dd;
+  --color-cyan: #56b6c2;
+  --color-white: #ffffff;
+  --color-black: #282c34;
+  
+  /* Theme metadata */
+  color-scheme: dark;
+}
+
+/* =============================================
+   ATOM ONE LIGHT THEME
+   ============================================= */
+[data-theme="light"] {
+  /* DaisyUI Core Semantic Colors */
+  --color-base-100: #fafafa;
+  --color-base-200: #f0f0f0;
+  --color-base-300: #e5e5e6;
+  --color-base-content: #383a42;
+  
+  --color-primary: #4078f2;
+  --color-primary-content: #ffffff;
+  
+  --color-secondary: #a626a4;
+  --color-secondary-content: #ffffff;
+  
+  --color-accent: #50a14f;
+  --color-accent-content: #ffffff;
+  
+  --color-neutral: #a0a1a7;
+  --color-neutral-content: #383a42;
+  
+  --color-info: #0184bc;
+  --color-info-content: #ffffff;
+  
+  --color-success: #50a14f;
+  --color-success-content: #ffffff;
+  
+  --color-warning: #c18401;
+  --color-warning-content: #ffffff;
+  
+  --color-error: #e45649;
+  --color-error-content: #ffffff;
+  
+  /* Additional Atom One Light Colors */
+  --color-bg: #fafafa;
+  --color-fg: #383a42;
+  --color-comment: #a0a1a7;
+  --color-gutter: #aaaaaa;
+  --color-red: #e45649;
+  --color-dark-red: #ca1243;
+  --color-green: #50a14f;
+  --color-yellow: #c18401;
+  --color-dark-yellow: #986801;
+  --color-blue: #4078f2;
+  --color-magenta: #a626a4;
+  --color-cyan: #0184bc;
+  --color-white: #ffffff;
+  --color-black: #383a42;
+  
+  /* Theme metadata */
+  color-scheme: light;
+}
+
+/* =============================================
+   TYPOGRAPHY & BASE STYLES
+   ============================================= */
 @theme {
   --font-chalkboard: 'Kalam', cursive;
+  --font-mono: 'Fira Code', monospace;
 }
 
 @layer base {
-  :root {
-    /* Fallback: Default to dark theme colors when no data-theme is set */
-    color-scheme: dark;
-    --color-base-100: oklch(25.33% 0.016 252.42);
-    --color-base-200: oklch(23.26% 0.014 253.1);
-    --color-base-300: oklch(21.15% 0.012 254.09);
-    --color-base-content: oklch(97.807% 0.029 256.847);
-    --color-primary: oklch(58% 0.233 277.117);
-    --color-primary-content: oklch(96% 0.018 272.314);
-    --color-secondary: oklch(65% 0.241 354.308);
-    --color-secondary-content: oklch(94% 0.028 342.258);
-    --color-accent: oklch(77% 0.152 181.912);
-    --color-accent-content: oklch(38% 0.063 188.416);
-    --color-neutral: oklch(14% 0.005 285.823);
-    --color-neutral-content: oklch(92% 0.004 286.32);
-    --color-info: oklch(74% 0.16 232.661);
-    --color-info-content: oklch(29% 0.066 243.157);
-    --color-success: oklch(76% 0.177 163.223);
-    --color-success-content: oklch(37% 0.077 168.94);
-    --color-warning: oklch(82% 0.189 84.429);
-    --color-warning-content: oklch(41% 0.112 45.904);
-    --color-error: oklch(71% 0.194 13.428);
-    --color-error-content: oklch(27% 0.105 12.094);
-  }
-
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 5rem;
   }
   
-  /* Chalkboard font: Kalam for everything */
   body {
     font-family: var(--font-chalkboard);
-    font-size: 1.125rem; /* Increased for handwritten legibility */
+    font-size: 1rem;
     line-height: 1.6;
+    background-color: var(--color-base-100);
+    color: var(--color-base-content);
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-chalkboard);
     line-height: 1.3;
+    color: var(--color-base-content);
+  }
+  
+  /* Monospace accents */
+  code, pre, .font-mono {
+    font-family: 'Fira Code', monospace;
+    font-variant-ligatures: normal;
+  }
+  
+  code {
+    background-color: var(--color-base-200);
+    color: var(--color-cyan);
+    padding: 0.2em 0.4em;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+  
+  pre {
+    background-color: var(--color-base-200);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+  }
+  
+  pre code {
+    background-color: transparent;
+    padding: 0;
+    color: var(--color-base-content);
   }
   
   ::selection {
-    background-color: oklch(var(--p));
-    color: oklch(var(--pc));
+    background-color: var(--color-primary);
+    color: var(--color-base-100);
+  }
+  
+  /* Link styling */
+  a {
+    color: var(--color-primary);
+    transition: color 0.2s ease;
+  }
+  
+  a:hover {
+    color: var(--color-info);
   }
 }
 
@@ -60,11 +194,21 @@
   .text-balance {
     text-wrap: balance;
   }
+  
+  /* Syntax highlighting utility classes */
+  .syntax-keyword { color: var(--color-magenta); }
+  .syntax-function { color: var(--color-primary); }
+  .syntax-string { color: var(--color-accent); }
+  .syntax-comment { color: var(--color-comment); }
+  .syntax-number { color: var(--color-dark-yellow); }
+  .syntax-operator { color: var(--color-info); }
 }
 
-/* Blog post prose styling */
+/* =============================================
+   BLOG POST PROSE STYLING
+   ============================================= */
 .prose {
-  color: oklch(var(--bc));
+  color: var(--color-base-content);
 }
 
 .prose h1,
@@ -73,23 +217,15 @@
 .prose h4,
 .prose h5,
 .prose h6 {
-  color: oklch(var(--bc));
+  color: var(--color-base-content);
   margin-top: 1.5em;
   margin-bottom: 0.5em;
   font-weight: 700;
 }
 
-.prose h1 {
-  font-size: 2.25em;
-}
-
-.prose h2 {
-  font-size: 1.875em;
-}
-
-.prose h3 {
-  font-size: 1.5em;
-}
+.prose h1 { font-size: 2.25em; }
+.prose h2 { font-size: 1.875em; }
+.prose h3 { font-size: 1.5em; }
 
 .prose p {
   margin-bottom: 1.25em;
@@ -102,61 +238,36 @@
   padding-left: 1.625em;
 }
 
-.prose li {
-  margin-bottom: 0.5em;
-}
+.prose li { margin-bottom: 0.5em; }
 
 .prose strong {
   font-weight: 700;
-  color: oklch(var(--bc));
-}
-
-.prose code {
-  background-color: oklch(var(--b3));
-  padding: 0.25em 0.5em;
-  border-radius: 0.25rem;
-  font-size: 0.875em;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-.prose pre {
-  background-color: oklch(var(--b3));
-  padding: 1.25em;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-  margin-bottom: 1.5em;
-}
-
-.prose pre code {
-  background-color: transparent;
-  padding: 0;
-  font-size: 0.875em;
-  color: oklch(var(--bc));
+  color: var(--color-warning);
 }
 
 .prose blockquote {
-  border-left: 4px solid oklch(var(--p));
+  border-left: 4px solid var(--color-primary);
   padding-left: 1em;
   margin-left: 0;
   margin-bottom: 1.25em;
   font-style: italic;
-  color: oklch(var(--bc) / 0.8);
+  color: var(--color-comment);
 }
 
 .prose hr {
   border: none;
-  border-top: 2px solid oklch(var(--b3));
+  border-top: 2px solid var(--color-neutral);
   margin: 2em 0;
 }
 
 .prose a {
-  color: oklch(var(--p));
+  color: var(--color-primary);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .prose a:hover {
-  color: oklch(var(--pf));
+  color: var(--color-info);
 }
 
 .prose img {
@@ -168,3 +279,69 @@
 .prose > *:first-child {
   margin-top: 0;
 }
+
+/* =============================================
+   COLOR MAPPING DOCUMENTATION
+   =============================================
+   
+   ATOM ONE DARK → DAISYUI SEMANTIC ROLES:
+   
+   Background Layers:
+   • base-100: #282c34 (main background)
+   • base-200: #31353f (card backgrounds, elevated surfaces)
+   • base-300: #3e4451 (borders, dividers)
+   • base-content: #abb2bf (primary text)
+   
+   Action Colors:
+   • primary: #61afef (blue - links, buttons, focus states)
+   • secondary: #c678dd (magenta - highlights, alternate actions)
+   • accent: #98c379 (green - success indicators, checkmarks)
+   
+   State Colors:
+   • info: #56b6c2 (cyan - informational alerts)
+   • success: #98c379 (green - success states)
+   • warning: #e5c07b (yellow - warnings, highlights)
+   • error: #e06c75 (red - errors, alerts)
+   
+   Neutral Elements:
+   • neutral: #4b5263 (gutter color - borders, inactive states)
+   
+   Syntax Highlighting (direct use):
+   • Red: #e06c75 (errors, important)
+   • Dark Red: #be5046 (diff deletions)
+   • Green: #98c379 (strings, success)
+   • Yellow: #e5c07b (warnings, numbers)
+   • Dark Yellow: #d19a66 (parameters)
+   • Blue: #61afef (functions, links)
+   • Magenta: #c678dd (keywords, special)
+   • Cyan: #56b6c2 (built-ins, types)
+   • Comment: #5c6370 (comments, muted text)
+   • Gutter: #4b5263 (line numbers, borders)
+   
+   ATOM ONE LIGHT → DAISYUI SEMANTIC ROLES:
+   
+   Background Layers:
+   • base-100: #fafafa (main background)
+   • base-200: #f0f0f0 (card backgrounds)
+   • base-300: #e5e5e6 (borders, dividers)
+   • base-content: #383a42 (primary text)
+   
+   Action Colors:
+   • primary: #4078f2 (blue)
+   • secondary: #a626a4 (magenta)
+   • accent: #50a14f (green)
+   
+   State Colors:
+   • info: #0184bc (cyan)
+   • success: #50a14f (green)
+   • warning: #c18401 (yellow-brown)
+   • error: #e45649 (red)
+   
+   Usage Guidelines:
+   • Use base-* classes for backgrounds and containers
+   • Use primary/secondary/accent for interactive elements
+   • Use info/success/warning/error for status indicators
+   • Use syntax colors directly via var(--color-*) for code/math
+   • Always ensure WCAG AA contrast ratios
+   
+   ============================================= */

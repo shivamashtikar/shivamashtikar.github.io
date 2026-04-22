@@ -2,11 +2,28 @@ export const categories = [
   {
     name: "AI & Machine Learning",
     iconType: "hero",
-    iconName: "CpuChipIcon",
+    iconName: "SparklesIcon",
+    isFeatured: true,
     items: [
-      { name: "vLLM", description: "High-throughput LLM serving", icon: "v" },
-      { name: "SGLang", description: "Structured Generation Language", icon: "S" },
-      { name: "Ollama", description: "Local LLM serving", icon: "O" }
+      { name: "vLLM", description: "High-throughput LLM serving inference engine", icon: "v" },
+      { name: "SGLang", description: "Structured generation for LLMs", icon: "S" },
+      { name: "LiteLLM", description: "Unified LLM proxy (700+ users)", icon: "L" },
+      { name: "LMCache", description: "KV cache optimization", icon: "K" },
+      { name: "VespaDB", description: "Vector database for RAG systems", icon: "V" },
+      { name: "Ollama", description: "Local LLM deployment", icon: "O" }
+    ]
+  },
+  {
+    name: "GPU & Infrastructure",
+    iconType: "hero",
+    iconName: "ServerIcon",
+    items: [
+      { name: "H200 Clusters", description: "8x GPU node management", icon: "H" },
+      { name: "AWS", description: "Cloud infrastructure", iconType: "fa", iconName: "FaAws", color: "text-[#61afef]" },
+      { name: "GCP", description: "Vertex AI integration", iconType: "si", iconName: "SiGooglecloud", color: "text-[#61afef]" },
+      { name: "Kubernetes", description: "Container orchestration", iconType: "si", iconName: "SiKubernetes", color: "text-[#61afef]" },
+      { name: "Docker", description: "Containerization", iconType: "fa", iconName: "FaDocker", color: "text-[#61afef]" },
+      { name: "Ray", description: "Distributed computing", icon: "R" }
     ]
   },
   {
@@ -14,63 +31,43 @@ export const categories = [
     iconType: "hero",
     iconName: "CodeBracketIcon",
     items: [
-      { name: "Haskell", description: "Functional programming, type safety", iconType: "si", iconName: "SiHaskell", color: "text-purple-600" },
-      { name: "PureScript", description: "Strongly-typed FP for frontend", iconType: "si", iconName: "SiPurescript", color: "text-indigo-600" },
-      { name: "Python", description: "Automation, scripting, ML tooling", iconType: "si", iconName: "SiPython", color: "text-yellow-500" },
-      { name: "JavaScript", description: "Frontend and backend applications", iconType: "si", iconName: "SiJavascript", color: "text-yellow-400" },
-      { name: "Java", description: "Backend and Android development", iconType: "fa", iconName: "FaJava", color: "text-red-600" }
+      { name: "Haskell", description: "Functional programming, type safety", iconType: "si", iconName: "SiHaskell", color: "text-[#c678dd]" },
+      { name: "PureScript", description: "Strongly-typed functional frontend", iconType: "si", iconName: "SiPurescript", color: "text-[#c678dd]" },
+      { name: "Python", description: "ML tooling, automation", iconType: "si", iconName: "SiPython", color: "text-[#e5c07b]" },
+      { name: "TypeScript", description: "Type-safe JavaScript", iconType: "si", iconName: "SiTypescript", color: "text-[#61afef]" },
+      { name: "ReScript", description: "OCaml-based frontend", iconType: "si", iconName: "SiRescript", color: "text-[#e06c75]" },
+      { name: "Java", description: "Backend, Android", iconType: "fa", iconName: "FaJava", color: "text-[#e5c07b]" }
     ]
   },
   {
-    name: "Frameworks & Libraries",
+    name: "Observability",
+    iconType: "hero",
+    iconName: "EyeIcon",
+    items: [
+      { name: "Prometheus", description: "Metrics collection", iconType: "si", iconName: "SiPrometheus", color: "text-[#e5c07b]" },
+      { name: "Grafana", description: "Visualization dashboards", iconType: "si", iconName: "SiGrafana", color: "text-[#e5c07b]" },
+      { name: "Loki", description: "Log aggregation", iconType: "si", iconName: "SiGrafana", color: "text-[#e06c75]" },
+      { name: "Promtail", description: "Log shipping agent", iconType: "si", iconName: "SiPrometheus", color: "text-[#5c6370]" }
+    ]
+  },
+  {
+    name: "Frameworks",
     iconType: "hero",
     iconName: "Squares2X2Icon",
     items: [
-      { name: "React", description: "Modern web UI development", iconType: "fa", iconName: "FaReact", color: "text-sky-500" },
-      { name: "Presto", description: "Cross-platform PureScript framework", iconType: "si", iconName: "SiHaskell", color: "text-pink-600" },
-      { name: "Streamly", description: "Haskell streaming library", icon: "S" }
+      { name: "React", description: "Modern UI development", iconType: "fa", iconName: "FaReact", color: "text-[#56b6c2]" },
+      { name: "Presto", description: "Cross-platform PureScript", iconType: "si", iconName: "SiHaskell", color: "text-[#c678dd]" },
+      { name: "Streamly", description: "Haskell streaming", icon: "S" },
+      { name: "Android Native", description: "Mobile development", iconType: "si", iconName: "SiAndroid", color: "text-[#98c379]" }
     ]
   },
   {
-    name: "Databases",
+    name: "Data & Storage",
     iconType: "hero",
     iconName: "CircleStackIcon",
     items: [
-      { name: "PostgreSQL", description: "Relational database management system", iconType: "si", iconName: "SiPostgresql", color: "text-blue-600" },
-      { name: "Vespa", description: "Vector database for AI applications", icon: "V" }
-    ]
-  },
-  {
-    name: "Cloud & DevOps",
-    iconType: "hero",
-    iconName: "CloudIcon",
-    items: [
-      { name: "AWS", description: "Cloud infrastructure and services", iconType: "fa", iconName: "FaAws", color: "text-orange-500" },
-      { name: "Google Cloud", description: "Cloud infrastructure and services", iconType: "si", iconName: "SiGooglecloud", color: "text-blue-500" },
-      { name: "Kubernetes", description: "Container orchestration and scaling", iconType: "si", iconName: "SiKubernetes", color: "text-blue-500" },
-      { name: "Docker", description: "Containerization and deployments", iconType: "fa", iconName: "FaDocker", color: "text-sky-600" },
-      { name: "Jenkins", description: "CI/CD automation", iconType: "si", iconName: "SiJenkins", color: "text-red-500" },
-      { name: "Nix", description: "Reproducible builds and environments", iconType: "si", iconName: "SiNixos", color: "text-sky-500" }
-    ]
-  },
-  {
-    name: "Monitoring",
-    iconType: "hero",
-    iconName: "ChartBarIcon",
-    items: [
-      { name: "Grafana", description: "Visualization and analytics", iconType: "si", iconName: "SiGrafana", color: "text-orange-500" },
-      { name: "Prometheus", description: "Metrics and alerting", iconType: "si", iconName: "SiPrometheus", color: "text-orange-600" },
-      { name: "Loki", description: "Log aggregation", iconType: "si", iconName: "SiGrafana", color: "text-red-500" },
-      { name: "Promtail", description: "Log agent for Loki", iconType: "si", iconName: "SiPrometheus", color: "text-gray-500" }
-    ]
-  },
-  {
-    name: "Testing",
-    iconType: "hero",
-    iconName: "BeakerIcon",
-    items: [
-      { name: "Pytest", description: "Unit and integration testing", iconType: "si", iconName: "SiPython", color: "text-green-500" },
-      { name: "Katalon", description: "End-to-end automation", icon: "K" }
+      { name: "PostgreSQL", description: "Relational database", iconType: "si", iconName: "SiPostgresql", color: "text-[#61afef]" },
+      { name: "Vespa", description: "Vector search engine", icon: "V" }
     ]
   }
 ];

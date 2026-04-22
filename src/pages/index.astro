@@ -3,14 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../sections/Hero.astro';
-import WhatIDo from '../sections/WhatIDo.astro';
+import ThePipeline from '../sections/ThePipeline.astro';
 import Experience from '../sections/Experience.astro';
 import ToolkitTabs from '../components/ToolkitTabs.jsx';
 import Education from '../sections/Education.astro';
 import { personal } from '../data/site.js';
 
-const title = `${personal.name} | Software Engineer`;
-const description = `${personal.tagline}. Specializing in AI/ML systems, functional programming, and cloud infrastructure.`;
+const title = `${personal.name} | SDE II · AI Infrastructure Specialist`;
+const description = `${personal.tagline}`;
 ---
 
 <Layout title={title} description={description}>
@@ -20,7 +20,7 @@ const description = `${personal.tagline}. Specializing in AI/ML systems, functio
     <Hero />
     
     <div id="content" class="container max-w-screen-lg mx-auto px-6 py-12 scroll-mt-20">
-      <WhatIDo />
+      <ThePipeline />
       <Experience />
       
       <!-- Interactive Toolkit as Island -->

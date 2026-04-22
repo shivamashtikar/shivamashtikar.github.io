@@ -1,0 +1,231 @@
+---
+/**
+ * Pipeline Doodle - Clean Centered Version
+ * Simplified chalkboard-style illustration showing SDLC flow
+ */
+---
+
+<div class="pipeline-doodle w-full max-w-4xl mx-auto">
+  <svg
+    viewBox="0 0 800 360"
+    class="w-full h-auto"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <!-- MAIN FLOW: Idea → Build → Ship (Centered in 800px) -->
+    <!-- Boxes at x=150, 400, 650 - evenly distributed -->
+
+    <!-- Stage 1: IDEA -->
+    <g transform="translate(150, 180)">
+      <rect
+        x="-60" y="-40" width="120" height="80"
+        rx="4"
+        fill="none"
+        stroke="var(--color-blue)"
+        stroke-width="2.5"
+        class="stage-box"
+      />
+      <text x="0" y="-5" text-anchor="middle" font-size="32">💡</text>
+      <text
+        x="0" y="25"
+        text-anchor="middle"
+        font-family="var(--font-chalkboard)"
+        font-size="16"
+        fill="var(--color-blue)"
+        font-weight="600"
+      >IDEA</text>
+    </g>
+
+    <!-- Arrow: Idea → Build (stops before box) -->
+    <g>
+      <!-- Line from IDEA (right edge at x=210) to BUILD (left edge at x=340) -->
+      <path
+        d="M 210 180 L 335 180"
+        fill="none"
+        stroke="var(--color-gutter)"
+        stroke-width="2"
+        stroke-dasharray="5,3"
+      />
+      <!-- Arrowhead stops before box -->
+      <polygon
+        points="330,175 340,180 330,185"
+        fill="var(--color-gutter)"
+      />
+      <!-- Label -->
+      <text
+        x="275" y="170"
+        text-anchor="middle"
+        font-family="var(--font-mono)"
+        font-size="10"
+        fill="var(--color-comment)"
+      >code</text>
+    </g>
+
+    <!-- Stage 2: BUILD -->
+    <g transform="translate(400, 180)">
+      <rect
+        x="-60" y="-40" width="120" height="80"
+        rx="4"
+        fill="none"
+        stroke="var(--color-magenta)"
+        stroke-width="2.5"
+        class="stage-box"
+      />
+      <text x="0" y="-5" text-anchor="middle" font-size="32">👨‍💻</text>
+      <text
+        x="0" y="25"
+        text-anchor="middle"
+        font-family="var(--font-chalkboard)"
+        font-size="16"
+        fill="var(--color-magenta)"
+        font-weight="600"
+      >BUILD</text>
+    </g>
+
+    <!-- Arrow: Build → Ship (stops before box) -->
+    <g>
+      <!-- Line from BUILD (right edge at x=460) to SHIP (left edge at x=590) -->
+      <path
+        d="M 460 180 L 585 180"
+        fill="none"
+        stroke="var(--color-gutter)"
+        stroke-width="2"
+        stroke-dasharray="5,3"
+      />
+      <!-- Arrowhead stops before box -->
+      <polygon
+        points="580,175 590,180 580,185"
+        fill="var(--color-gutter)"
+      />
+      <!-- Label -->
+      <text
+        x="525" y="170"
+        text-anchor="middle"
+        font-family="var(--font-mono)"
+        font-size="10"
+        fill="var(--color-comment)"
+      >deploy</text>
+    </g>
+
+    <!-- Stage 3: SHIP -->
+    <g transform="translate(650, 180)">
+      <rect
+        x="-60" y="-40" width="120" height="80"
+        rx="4"
+        fill="none"
+        stroke="var(--color-green)"
+        stroke-width="2.5"
+        class="stage-box"
+      />
+      <text x="0" y="-5" text-anchor="middle" font-size="32">🚀</text>
+      <text
+        x="0" y="25"
+        text-anchor="middle"
+        font-family="var(--font-chalkboard)"
+        font-size="16"
+        fill="var(--color-green)"
+        font-weight="600"
+      >SHIP</text>
+    </g>
+
+    <!-- Feedback Loop: Ship → Idea (Amazon smile style) -->
+    <g>
+      <!-- Curved path from SHIP bottom to IDEA bottom -->
+      <!-- Start: below SHIP at x=650, End: below IDEA at x=150 -->
+      <path
+        d="M 650 250 C 550 340 250 340 150 250"
+        fill="none"
+        stroke="var(--color-yellow)"
+        stroke-width="2.5"
+        stroke-dasharray="8,4"
+        opacity="0.7"
+      />
+      <!-- Arrowhead pointing up-left into IDEA box -->
+      <polygon
+        points="145,238 140,255 155,252"
+        fill="var(--color-yellow)"
+        opacity="0.7"
+      />
+      <!-- Label -->
+      <text
+        x="400" y="310"
+        text-anchor="middle"
+        font-family="var(--font-mono)"
+        font-size="10"
+        fill="var(--color-yellow)"
+        opacity="0.8"
+      >feedback loop</text>
+    </g>
+
+    <!-- Domain Labels (positioned above boxes) -->
+
+    <!-- SDLC Label -->
+    <g transform="translate(150, 80)">
+      <circle cx="0" cy="0" r="3" fill="var(--color-blue)" />
+      <text
+        x="10" y="4"
+        font-family="var(--font-chalkboard)"
+        font-size="14"
+        fill="var(--color-blue)"
+        font-weight="600"
+      >SDLC</text>
+      <text
+        x="10" y="20"
+        font-family="var(--font-mono)"
+        font-size="10"
+        fill="var(--color-magenta)"
+      >Systems Thinking</text>
+    </g>
+
+    <!-- AI/ML Label -->
+    <g transform="translate(400, 80)">
+      <circle cx="0" cy="0" r="3" fill="var(--color-magenta)" />
+      <text
+        x="10" y="4"
+        font-family="var(--font-chalkboard)"
+        font-size="14"
+        fill="var(--color-magenta)"
+        font-weight="600"
+      >AI / ML</text>
+      <text
+        x="10" y="20"
+        font-family="var(--font-mono)"
+        font-size="10"
+        fill="var(--color-magenta)"
+      >GPU · vLLM · 700+ Users</text>
+    </g>
+
+    <!-- Leadership Label -->
+    <g transform="translate(650, 80)">
+      <circle cx="0" cy="0" r="3" fill="var(--color-green)" />
+      <text
+        x="10" y="4"
+        font-family="var(--font-chalkboard)"
+        font-size="14"
+        fill="var(--color-green)"
+        font-weight="600"
+      >Leadership</text>
+      <text
+        x="10" y="20"
+        font-family="var(--font-mono)"
+        font-size="10"
+        fill="var(--color-magenta)"
+      >Mentoring · Growth</text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .pipeline-doodle {
+    color: inherit;
+  }
+
+  .stage-box {
+    transition: all 0.3s ease;
+  }
+
+  @media (max-width: 768px) {
+    .pipeline-doodle svg {
+      max-width: 100%;
+    }
+  }
+</style>

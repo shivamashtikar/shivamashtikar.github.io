@@ -1,38 +1,148 @@
 ---
 import experiencesData from '../data/experience.js';
 const { experiences } = experiencesData;
+const juspay = experiences[0];
 ---
 
-<section id="experience" class="mb-24">
-  <h2 class="text-4xl font-bold text-center mb-12 text-base-content">Experience</h2>
-
-  <div class="max-w-3xl mx-auto">
-    <div class="border-l-4 border-primary pl-8 space-y-12">
-      {experiences.map((exp) => (
-        <article class="relative">
-          <div class="absolute -left-[41px] bg-primary h-4 w-4 rounded-full ring-4 ring-base-100"></div>
-
-          <h3 class="text-2xl font-semibold text-base-content">
-            {exp.role} @{' '}
-            <a
-              href={exp.companyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="text-primary hover:underline"
-            >
-              {exp.company}
-            </a>
+<section id="experience" class="py-16 md:py-20">
+  <div class="max-w-4xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-base-content">
+      Journey
+    </h2>
+    
+    {/* Featured: Current Role at Juspay */}
+    <article class="mb-12 bg-base-200 rounded-2xl p-6 md:p-8 border border-base-300">
+      {/* Header */}
+      <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+        <div>
+          <h3 class="text-xl md:text-2xl font-bold text-base-content">
+            SDE II @ {juspay.company}
           </h3>
-
-          <time class="text-md text-base-content/60 mb-4 block">
-            {exp.period}
+          <time class="text-primary font-medium block mt-1">
+            {juspay.roles[0].period}
           </time>
-
-          <ul class="list-disc list-inside text-base-content/80 space-y-2">
-            {exp.highlights.map((highlight) => (
-              <li class="leading-relaxed">{highlight}</li>
+        </div>
+        <span class="px-3 py-1 bg-primary text-primary-content text-sm font-semibold rounded-full">
+          Current
+        </span>
+      </div>
+      
+      <p class="text-base text-base-content/70 mb-8">
+        {juspay.overview}
+      </p>
+      
+      {/* Team 1: Xyne (AI) */}
+      <div class="mb-8 pl-4 md:pl-6 border-l-4 border-primary">
+        <div class="mb-4">
+          <h4 class="text-lg font-semibold text-base-content">
+            {juspay.roles[0].teams[0].name}
+          </h4>
+          <p class="text-sm text-base-content/50">
+            {juspay.roles[0].teams[0].focus} · {juspay.roles[0].teams[0].period}
+          </p>
+        </div>
+        
+        <ul class="space-y-3 mb-4">
+          {juspay.roles[0].teams[0].achievements.map((achievement) => (
+            <li class="flex gap-3">
+              <span class="text-primary mt-1 flex-shrink-0">→</span>
+              <span class="text-base-content/80 text-sm md:text-base">
+                {achievement.highlight ? (
+                  <>
+                    {achievement.text.split(achievement.highlight).map((part, i, arr) => (
+                      <>
+                        {part}
+                        {i < arr.length - 1 && (
+                          <strong class="text-primary">{achievement.highlight}</strong>
+                        )}
+                      </>
+                    ))}
+                  </>
+                ) : (
+                  achievement.text
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+        
+        <div class="flex flex-wrap gap-2">
+          {juspay.roles[0].teams[0].technologies.map((tech) => (
+            <span class="px-2 py-1 bg-base-300 rounded text-xs font-mono text-base-content/70">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+      
+      {/* Team 2: Euler (Full-Stack) */}
+      <div class="pl-4 md:pl-6 border-l-4 border-secondary">
+        <div class="mb-4">
+          <h4 class="text-lg font-semibold text-base-content">
+            {juspay.roles[0].teams[1].name}
+          </h4>
+          <p class="text-sm text-base-content/50">
+            {juspay.roles[0].teams[1].focus} · {juspay.roles[0].teams[1].period}
+          </p>
+        </div>
+        
+        <ul class="space-y-3 mb-4">
+          {juspay.roles[0].teams[1].achievements.slice(0, 3).map((achievement) => (
+            <li class="flex gap-3">
+              <span class="text-secondary mt-1 flex-shrink-0">→</span>
+              <span class="text-base-content/80 text-sm md:text-base">
+                {achievement.highlight ? (
+                  <>
+                    {achievement.text.split(achievement.highlight).map((part, i, arr) => (
+                      <>
+                        {part}
+                        {i < arr.length - 1 && (
+                          <strong class="text-secondary">{achievement.highlight}</strong>
+                        )}
+                      </>
+                    ))}
+                  </>
+                ) : (
+                  achievement.text
+                )}
+              </span>
+            </li>
+          ))}
+        </ul>
+        
+        <div class="flex flex-wrap gap-2">
+          {juspay.roles[0].teams[1].technologies.slice(0, 4).map((tech) => (
+            <span class="px-2 py-1 bg-base-300 rounded text-xs font-mono text-base-content/70">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </article>
+    
+    {/* Previous Roles - Compact Cards */}
+    <div class="grid md:grid-cols-3 gap-4">
+      {juspay.roles.slice(1).map((role) => (
+        <article class="bg-base-200 rounded-xl p-5 border border-base-300">
+          <h3 class="text-base font-bold text-base-content mb-1">
+            {role.title}
+          </h3>
+          <time class="text-xs text-base-content/50 block mb-3">
+            {role.period}
+          </time>
+          <p class="text-sm text-base-content/70 mb-3">
+            {role.summary}
+          </p>
+          <div class="text-lg font-bold text-accent">
+            {role.keyHighlight}
+          </div>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            {role.technologies.slice(0, 3).map((tech) => (
+              <span class="px-1.5 py-0.5 bg-base-300 rounded text-[10px] font-mono text-base-content/60">
+                {tech}
+              </span>
             ))}
-          </ul>
+          </div>
         </article>
       ))}
     </div>

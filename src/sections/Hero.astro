@@ -1,53 +1,78 @@
 ---
-import Typewriter from '../components/Typewriter.jsx';
-import { personal } from '../data/site.js';
+import { personal, social } from '../data/site.js';
 ---
 
 <section
   id="about"
-  class="relative flex flex-col items-center justify-center text-center min-h-[70vh] px-6 py-16 bg-gradient-to-b from-base-200 to-base-100"
+  class="min-h-[70vh] flex flex-col justify-center px-6 py-20 relative"
 >
-  <div class="max-w-4xl mx-auto">
-    <h1 class="text-5xl md:text-6xl font-extrabold text-base-content mb-4">
-      Hi, I'm
-      <span class="block text-6xl md:text-7xl font-bold text-primary min-h-[3.75rem] md:min-h-[4.5rem]">
-        <Typewriter
-          client:visible
-          words={['Shivam Ashtikar', 'Software Engineer', 'AI Enthusiast', 'Problem Solver']}
-        />
-      </span>
-    </h1>
-
-    <p class="text-xl md:text-2xl text-base-content/70 max-w-3xl mx-auto mb-8 leading-relaxed">
-      {personal.tagline}. Currently working as an SDE II at Juspay, specializing in AI/ML systems,
-      functional programming, and cloud infrastructure.
-    </p>
-
-    <div class="flex gap-4 justify-center mb-12">
-      <a
-        href="#experience"
-        class="px-6 py-3 bg-primary text-primary-content rounded-lg font-semibold hover:bg-primary/90 transition shadow-lg hover:shadow-xl"
-      >
-        View Experience
-      </a>
-      <a
-        href="https://github.com/shivamashtikar"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="px-6 py-3 border-2 border-base-300 rounded-lg font-semibold hover:border-primary hover:text-primary transition"
-      >
-        GitHub Profile
-      </a>
+  <div class="max-w-6xl mx-auto w-full">
+    <!-- Desktop: Side-by-side / Mobile: Stacked -->
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      
+      <!-- Left: Identity -->
+      <div class="text-center lg:text-left">
+        <!-- Name -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-base-content mb-3">
+          {personal.name}
+        </h1>
+        
+        <!-- Decorative line -->
+        <div class="h-1 w-24 bg-primary mx-auto lg:mx-0 mb-6 rounded-full"></div>
+        
+        <!-- Title -->
+        <p class="text-lg md:text-xl text-primary font-medium mb-2">
+          {personal.title}
+        </p>
+        
+        <!-- Subtitle -->
+        <p class="text-base text-base-content/60">
+          Juspay · 7+ years experience
+        </p>
+      </div>
+      
+      <!-- Right: Description & Actions -->
+      <div class="text-center lg:text-left">
+        <!-- Bio -->
+        <p class="text-base md:text-lg text-base-content/80 leading-relaxed mb-8">
+          {personal.tagline}
+        </p>
+        
+        <!-- Skill Tags -->
+        <div class="flex flex-wrap gap-2 justify-center lg:justify-start mb-8">
+          <span class="px-3 py-1.5 bg-base-200 rounded-full text-sm font-mono text-cyan">
+            LLM Inference
+          </span>
+          <span class="px-3 py-1.5 bg-base-200 rounded-full text-sm font-mono text-magenta">
+            GPU Infrastructure
+          </span>
+          <span class="px-3 py-1.5 bg-base-200 rounded-full text-sm font-mono text-green">
+            Functional Programming
+          </span>
+          <span class="px-3 py-1.5 bg-base-200 rounded-full text-sm font-mono text-yellow">
+            Team Leadership
+          </span>
+        </div>
+        
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+          <a 
+            href="#experience" 
+            class="px-6 py-3 bg-primary text-primary-content rounded-lg font-semibold hover:bg-primary/90 transition-all hover:scale-105 shadow-lg shadow-primary/20"
+          >
+            View Experience
+          </a>
+          <a 
+            href={social.github}
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="px-6 py-3 border-2 border-base-300 rounded-lg font-semibold text-base-content hover:border-primary hover:text-primary transition-all"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+      
     </div>
   </div>
-
-  <a
-    href="#content"
-    class="absolute bottom-8 animate-bounce inline-flex items-center p-3 bg-primary text-primary-content rounded-full shadow-lg hover:bg-primary/90 transition"
-    aria-label="Scroll to content"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-    </svg>
-  </a>
 </section>

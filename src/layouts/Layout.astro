@@ -50,12 +50,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site)} />
     
-    <!-- Theme Script (Prevent FOUC) -->
+    <!-- Theme Script (Prevent FOUC - Respect System Preference) -->
     <script is:inline>
       (function() {
         const savedTheme = localStorage.getItem('theme');
-        // If user hasn't set a preference, default to dark
-        const theme = savedTheme || 'dark';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        // Priority: saved preference > system preference > dark fallback
+        const theme = savedTheme || (prefersDark ? 'dark' : 'light');
         document.documentElement.setAttribute('data-theme', theme);
       })();
     </script>

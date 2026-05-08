@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { hostedTools } from '../data/workbench.js';
+import { personal } from '../data/site.js';
+
+const title = `Workbench | ${personal.name}`;
+const description = "Self-hosted tools and utilities I maintain for the developer community";
+---
+
+<Layout title={title} description={description}>
+  <Header />
+
+  <main class="min-h-screen pb-20 md:pb-0">
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-12">
+      {/* Hero Section */}
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-base-content">
+          Workbench
+        </h1>
+        <p class="text-lg text-base-content/70 max-w-2xl mx-auto">
+          Self-hosted tools and utilities I maintain. Open resources for developers, 
+          freely available for anyone to use.
+        </p>
+      </div>
+
+      {/* Tools Grid */}
+      <div class="grid md:grid-cols-2 gap-6">
+        {hostedTools.map((tool) => (
+          <a 
+            href={tool.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group bg-base-100 rounded-xl border border-base-300 shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 block"
+          >
+            {/* Logo Preview */}
+            <div class="relative h-48 bg-base-200 border-b border-base-300 flex items-center justify-center p-8">
+              <img 
+                src={tool.logo} 
+                alt={`${tool.name} logo`}
+                class="max-h-full max-w-full object-contain"
+              />
+              {/* Hover Overlay */}
+              <div class="absolute inset-0 bg-base-200/0 group-hover:bg-base-200/30 transition-colors flex items-center justify-center">
+                <span class="opacity-0 group-hover:opacity-100 bg-primary text-primary-content px-4 py-2 rounded-full font-medium shadow-lg transform scale-90 group-hover:scale-100 transition-all">
+                  Open Live ↗
+                </span>
+              </div>
+            </div>
+            
+            {/* Content */}
+            <div class="p-5">
+              <div class="flex items-start justify-between gap-4 mb-2">
+                <h2 class="font-bold text-xl group-hover:text-primary transition-colors">
+                  {tool.name}
+                </h2>
+                <span class="text-xs font-medium px-2 py-1 rounded-full bg-base-200 text-base-content/60 whitespace-nowrap">
+                  {tool.category}
+                </span>
+              </div>
+              <p class="text-sm text-base-content/70">
+                {tool.description}
+              </p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Coming Soon Note */}
+      <div class="mt-12 text-center">
+        <p class="text-sm text-base-content/50">
+          More tools coming soon. Hosting experiments, utilities, and developer resources.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <div class="hidden md:block">
+    <Footer />
+  </div>
+</Layout>

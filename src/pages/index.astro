@@ -8,6 +8,7 @@ import ThePipeline from '../sections/ThePipeline.astro';
 import Experience from '../sections/Experience.astro';
 import ToolkitTabs from '../components/ToolkitTabs.jsx';
 import Education from '../sections/Education.astro';
+import WorkbenchTeaser from '../sections/WorkbenchTeaser.astro';
 import { personal } from '../data/site.js';
 
 const title = `${personal.name} | SDE II · AI Infrastructure Specialist`;
@@ -28,6 +29,8 @@ const description = `${personal.tagline}`;
       <ToolkitTabs client:visible />
 
       <Education />
+
+      <WorkbenchTeaser />
     </div>
 
     <!-- Mobile-only Social Section -->

@@ -30,7 +30,7 @@ export const experiences = [
     roles: [
       {
         title: 'SDE II',
-        period: 'Mar 2023 – April 2026',
+        period: 'Mar 2023 – May 2026',
         teams: [
           {
             name: 'Xyne - AI Infrastructure',

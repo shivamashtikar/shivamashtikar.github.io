@@ -1,7 +1,50 @@
 ---
 import experiencesData from '../data/experience.js';
 const { experiences } = experiencesData;
-const juspay = experiences[0];
+
+// --- Current role: company with isCurrent flag (fallback to first) ---
+const currentCompany = experiences.find((e) => e.isCurrent) || experiences[0];
+const currentRole = currentCompany.roles[0];
+
+// --- Gather past roles with company context ---
+const pastRoles = [];
+for (const company of experiences) {
+  const roles = company.isCurrent ? company.roles.slice(1) : company.roles;
+  for (const role of roles) {
+    pastRoles.push({ role, company });
+  }
+}
+
+// Sort past roles by start date (most recent first)
+function parseStartDate(period) {
+  const start = period.split(' – ')[0];
+  const [month, year] = start.split(' ');
+  const months = {
+    Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6,
+    Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12,
+  };
+  return parseInt(year) * 12 + (months[month] || 0);
+}
+pastRoles.sort((a, b) => parseStartDate(b.role.period) - parseStartDate(a.role.period));
+
+// Separate past roles: detailed (with teams) vs compact (summary based)
+const pastDetailedRoles = pastRoles.filter((item) => item.role.teams?.length > 0);
+const compactRoles = pastRoles.filter((item) => !item.role.teams?.length);
+
+// Color palette for dynamic team sections
+const teamColors = ['primary', 'secondary', 'accent', 'info', 'warning'];
+
+// Helper: split achievement text at highlight and tag each part (returns plain data, not JSX)
+function getHighlightParts(text, highlight) {
+  if (!highlight) return [{ text, isHighlight: false }];
+  const parts = text.split(highlight);
+  const result = [];
+  for (let i = 0; i < parts.length; i++) {
+    if (parts[i]) result.push({ text: parts[i], isHighlight: false });
+    if (i < parts.length - 1) result.push({ text: highlight, isHighlight: true });
+  }
+  return result;
+}
 ---
 
 <section id="experience" class="py-16 md:py-20">
@@ -9,144 +52,158 @@ const juspay = experiences[0];
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-base-content">
       Journey
     </h2>
-    
-    {/* Featured: Current Role at Juspay */}
+
+    <!-- Featured: Current Role -->
     <article class="mb-12 bg-base-200 rounded-2xl p-6 md:p-8 border border-base-300">
-      {/* Header */}
+      <!-- Header -->
       <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
         <div>
           <h3 class="text-xl md:text-2xl font-bold text-base-content">
-            SDE II @ {juspay.company}
+            {currentRole.title} @ <a href={currentCompany.companyUrl} target="_blank" rel="noopener noreferrer">{currentCompany.company}</a>
           </h3>
           <time class="text-primary font-medium block mt-1">
-            {juspay.roles[0].period}
+            {currentRole.period}
           </time>
         </div>
         <span class="px-3 py-1 bg-primary text-primary-content text-sm font-semibold rounded-full">
           Current
         </span>
       </div>
-      
-      <p class="text-base text-base-content/70 mb-8">
-        {juspay.overview}
-      </p>
-      
-      {/* Team 1: Xyne (AI) */}
-      <div class="mb-8 pl-4 md:pl-6 border-l-4 border-primary">
-        <div class="mb-4">
-          <h4 class="text-lg font-semibold text-base-content">
-            {juspay.roles[0].teams[0].name}
-          </h4>
-          <p class="text-sm text-base-content/50">
-            {juspay.roles[0].teams[0].focus} · {juspay.roles[0].teams[0].period}
-          </p>
-        </div>
-        
-        <ul class="space-y-3 mb-4">
-          {juspay.roles[0].teams[0].achievements.map((achievement) => (
-            <li class="flex gap-3">
-              <span class="text-primary mt-1 flex-shrink-0">→</span>
-              <span class="text-base-content/80 text-sm md:text-base">
-                {achievement.highlight ? (
-                  <>
-                    {achievement.text.split(achievement.highlight).map((part, i, arr) => (
-                      <>
-                        {part}
-                        {i < arr.length - 1 && (
-                          <strong class="text-primary">{achievement.highlight}</strong>
-                        )}
-                      </>
-                    ))}
-                  </>
-                ) : (
-                  achievement.text
-                )}
-              </span>
-            </li>
-          ))}
-        </ul>
-        
-        <div class="flex flex-wrap gap-2">
-          {juspay.roles[0].teams[0].technologies.map((tech) => (
-            <span class="px-2 py-1 bg-base-300 rounded text-xs font-mono text-base-content/70">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-      
-      {/* Team 2: Euler (Full-Stack) */}
-      <div class="pl-4 md:pl-6 border-l-4 border-secondary">
-        <div class="mb-4">
-          <h4 class="text-lg font-semibold text-base-content">
-            {juspay.roles[0].teams[1].name}
-          </h4>
-          <p class="text-sm text-base-content/50">
-            {juspay.roles[0].teams[1].focus} · {juspay.roles[0].teams[1].period}
-          </p>
-        </div>
-        
-        <ul class="space-y-3 mb-4">
-          {juspay.roles[0].teams[1].achievements.slice(0, 3).map((achievement) => (
-            <li class="flex gap-3">
-              <span class="text-secondary mt-1 flex-shrink-0">→</span>
-              <span class="text-base-content/80 text-sm md:text-base">
-                {achievement.highlight ? (
-                  <>
-                    {achievement.text.split(achievement.highlight).map((part, i, arr) => (
-                      <>
-                        {part}
-                        {i < arr.length - 1 && (
-                          <strong class="text-secondary">{achievement.highlight}</strong>
-                        )}
-                      </>
-                    ))}
-                  </>
-                ) : (
-                  achievement.text
-                )}
-              </span>
-            </li>
-          ))}
-        </ul>
-        
-        <div class="flex flex-wrap gap-2">
-          {juspay.roles[0].teams[1].technologies.slice(0, 4).map((tech) => (
-            <span class="px-2 py-1 bg-base-300 rounded text-xs font-mono text-base-content/70">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
+
+      {currentCompany.overview && (
+        <p class="text-base text-base-content/70 mb-8">{currentCompany.overview}</p>
+      )}
+
+      {currentRole.teams?.map((team, i) => {
+        const color = teamColors[i % teamColors.length];
+        const isLast = i === currentRole.teams.length - 1;
+        return (
+          <div class={`pl-4 md:pl-6 border-l-4 border-${color}${isLast ? '' : ' mb-8'}`}>
+            <div class="mb-4">
+              <h4 class="text-lg font-semibold text-base-content">{team.name}</h4>
+              <p class="text-sm text-base-content/50">
+                {team.focus ? `${team.focus} · ${team.period}` : team.period}
+              </p>
+            </div>
+
+            {team.achievements?.length > 0 && (
+              <ul class="space-y-3 mb-4">
+                {team.achievements.map((achievement) => (
+                  <li class="flex gap-3">
+                    <span class={`text-${color} mt-1 flex-shrink-0`}>→</span>
+                    <span class="text-base-content/80 text-sm md:text-base">
+                      {getHighlightParts(achievement.text, achievement.highlight).map(
+                        (part) =>
+                          part.isHighlight ? (
+                            <strong class={`text-${color}`}>{part.text}</strong>
+                          ) : (
+                            <>{part.text}</>
+                          ),
+                      )}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+
+            {team.technologies?.length > 0 && (
+              <div class="flex flex-wrap gap-2">
+                {team.technologies.map((tech) => (
+                  <span class="px-2 py-1 bg-base-300 rounded text-xs font-mono text-base-content/70">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })}
     </article>
-    
-    {/* Previous Roles - Compact Cards */}
-    <div class="grid md:grid-cols-3 gap-4 items-stretch">
-      {juspay.roles.slice(1).map((role) => (
-        <article class="bg-base-200 rounded-xl p-5 border border-base-300 flex flex-col h-full">
-          <h3 class="text-base font-bold text-base-content mb-1">
-            {role.title}
-          </h3>
-          <time class="text-xs text-base-content/50 block mb-3">
-            {role.period}
-          </time>
-          <div class="flex-grow flex flex-col">
-            <p class="text-sm text-base-content/70 mb-3">
-              {role.summary}
-            </p>
-            <div class="text-lg font-bold text-accent mt-auto">
-              {role.keyHighlight}
+
+    <!-- Past Detailed Roles (with team breakdowns) -->
+    {pastDetailedRoles.length > 0 &&
+      pastDetailedRoles.map(({ role, company }) => (
+        <article class="mb-12 bg-base-200 rounded-2xl p-6 md:p-8 border border-base-300">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-6">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold text-base-content">
+                {role.title} @ <a href={company.companyUrl} target="_blank" rel="noopener noreferrer">{company.company}</a>
+              </h3>
+              <time class="text-primary font-medium block mt-1">{role.period}</time>
             </div>
           </div>
-          <div class="flex flex-wrap gap-1.5 mt-3 mt-auto">
-            {role.technologies.slice(0, 3).map((tech) => (
-              <span class="px-1.5 py-0.5 bg-base-300 rounded text-[10px] font-mono text-base-content/60">
-                {tech}
-              </span>
-            ))}
-          </div>
+
+          {role.teams?.map((team, i) => {
+            const color = teamColors[i % teamColors.length];
+            const isLast = i === role.teams.length - 1;
+            return (
+              <div class={`pl-4 md:pl-6 border-l-4 border-${color}${isLast ? '' : ' mb-8'}`}>
+                <div class="mb-4">
+                  <h4 class="text-lg font-semibold text-base-content">{team.name}</h4>
+                  <p class="text-sm text-base-content/50">
+                    {team.focus ? `${team.focus} · ${team.period}` : team.period}
+                  </p>
+                </div>
+
+                {team.achievements?.length > 0 && (
+                  <ul class="space-y-3 mb-4">
+                    {team.achievements.map((achievement) => (
+                      <li class="flex gap-3">
+                        <span class={`text-${color} mt-1 flex-shrink-0`}>→</span>
+                        <span class="text-base-content/80 text-sm md:text-base">
+                          {getHighlightParts(achievement.text, achievement.highlight).map(
+                            (part) =>
+                              part.isHighlight ? (
+                                <strong class={`text-${color}`}>{part.text}</strong>
+                              ) : (
+                                <>{part.text}</>
+                              ),
+                          )}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {team.technologies?.length > 0 && (
+                  <div class="flex flex-wrap gap-2">
+                    {team.technologies.map((tech) => (
+                      <span class="px-2 py-1 bg-base-300 rounded text-xs font-mono text-base-content/70">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </article>
       ))}
-    </div>
+
+    <!-- Previous Roles - Compact Cards -->
+    {compactRoles.length > 0 && (
+      <div class="grid md:grid-cols-3 gap-4 items-stretch">
+        {compactRoles.map(({ role, company }) => (
+          <article class="bg-base-200 rounded-xl p-5 border border-base-300 flex flex-col h-full">
+            <h3 class="text-base font-bold text-base-content mb-1">{role.title}</h3>
+            <p class="text-xs text-base-content/50 mb-1"><a href={company.companyUrl} target="_blank" rel="noopener noreferrer" class="text-xs text-base-content/50 hover:text-primary transition">{company.company}</a></p>
+            <time class="text-xs text-base-content/50 block mb-3">{role.period}</time>
+            <div class="flex-grow flex flex-col">
+              <p class="text-sm text-base-content/70 mb-3">{role.summary}</p>
+              <div class="text-lg font-bold text-accent mt-auto">{role.keyHighlight}</div>
+            </div>
+            {role.technologies?.length > 0 && (
+              <div class="flex flex-wrap gap-1.5 mt-3">
+                {role.technologies.slice(0, 3).map((tech) => (
+                  <span class="px-1.5 py-0.5 bg-base-300 rounded text-[10px] font-mono text-base-content/60">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    )}
   </div>
 </section>

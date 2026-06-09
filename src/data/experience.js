@@ -1,14 +1,36 @@
 export const experiences = [
   {
+    company: 'Sarvam AI',
+    companyUrl: 'https://www.sarvam.ai',
+    location: 'Bangalore, India',
+    isCurrent: true,
+    overview: '',
+    roles: [
+      {
+        title: 'ML Engineer',
+        period: 'Jun 2026 – Present',
+        teams: [
+          {
+            name: 'Samvaad',
+            period: 'Jun 2026 – Present',
+            focus: '',
+            achievements: [],
+            technologies: [],
+          },
+        ],
+      },
+    ],
+  },
+  {
     company: 'Juspay',
     companyUrl: 'https://juspay.io/in',
     location: 'India',
+    isCurrent: false,
     overview: '7+ years across AI Infrastructure, Full-Stack Platforms, and Payments',
     roles: [
       {
         title: 'SDE II',
-        period: 'Mar 2023 – Present',
-        isCurrent: true,
+        period: 'Mar 2023 – April 2026',
         teams: [
           {
             name: 'Xyne - AI Infrastructure',
@@ -55,7 +77,6 @@ export const experiences = [
       {
         title: 'SDE I',
         period: 'Jun 2021 – Mar 2023',
-        isCurrent: false,
         summary:
           'Led Payment Page engineering team. Reduced PureScript compile time by 6× through strategic refactoring. Built DevTools application for payment flow verification.',
         keyHighlight: '6× faster compile times',
@@ -64,7 +85,6 @@ export const experiences = [
       {
         title: 'Associate SDE',
         period: 'Jul 2019 – Jun 2021',
-        isCurrent: false,
         summary:
           'Full-stack payments development. Improved Android render time by 66% with pre-rendering. Migrated data pipeline from Python to Haskell using Streamly.',
         keyHighlight: '66% render improvement',
@@ -73,7 +93,6 @@ export const experiences = [
       {
         title: 'FP Developer Intern',
         period: 'Dec 2018 – Feb 2019',
-        isCurrent: false,
         summary:
           'Enhanced cross-platform framework performance by 10% through JS-Java bridge optimization.',
         keyHighlight: '10% performance gain',

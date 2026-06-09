@@ -1,5 +1,7 @@
 ---
 import { personal } from '../data/site.js';
+import { experiences } from '../data/experience.js';
+const currentCompany = experiences.find((e) => e.isCurrent) || experiences[0];
 ---
 
 <section
@@ -27,7 +29,7 @@ import { personal } from '../data/site.js';
         
         <!-- Subtitle -->
         <p class="text-base text-base-content/60">
-          Juspay · 7+ years experience
+          <a href={currentCompany.companyUrl} target="_blank" rel="noopener noreferrer" class="text-base text-base-content/60 hover:text-primary transition">{currentCompany.company}</a> · {currentCompany.roles[0].title}
         </p>
       </div>
       
